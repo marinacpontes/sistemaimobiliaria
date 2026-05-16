@@ -52,6 +52,30 @@ export function Quadras() {
               ),
             },
             { header: 'Lotes', cell: (q) => q._count?.lotes ?? 0 },
+            {
+              header: 'Disponíveis',
+              cell: (q) => (
+                <span className="font-medium text-green-600">
+                  {q._count?.lotesDisponiveis ?? 0}
+                </span>
+              ),
+            },
+            {
+              header: 'Reservados',
+              cell: (q) => (
+                <span className="font-medium text-yellow-600">
+                  {q._count?.lotesReservados ?? 0}
+                </span>
+              ),
+            },
+            {
+              header: 'Vendidos',
+              cell: (q) => (
+                <span className="font-medium text-slate-500">
+                  {q._count?.lotesVendidos ?? 0}
+                </span>
+              ),
+            },
           ]}
         />
       )}

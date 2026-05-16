@@ -12,7 +12,12 @@ export interface Quadra {
   id: string;
   nome: string;
   createdAt?: string;
-  _count?: { lotes: number };
+  _count?: {
+    lotes: number;
+    lotesDisponiveis: number;
+    lotesReservados: number;
+    lotesVendidos: number;
+  };
 }
 
 export interface Lote {

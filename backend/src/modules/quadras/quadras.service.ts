@@ -4,10 +4,22 @@ import { CreateQuadraInput, UpdateQuadraInput } from './quadras.dto';
 
 export const quadrasService = {
   async list() {
-    return prisma.quadra.findMany({
+    const quadras = await prisma.quadra.findMany({
       orderBy: { nome: 'asc' },
-      include: { _count: { select: { lotes: true } } },
+      include: { lotes: { select: { status: true } } },
     });
+
+    return quadras.map((q) => ({
+      id: q.id,
+      nome: q.nome,
+      createdAt: q.createdAt,
+      _count: {
+        lotes: q.lotes.length,
+        lotesDisponiveis: q.lotes.filter((l) => l.status === 'DISPONIVEL').length,
+        lotesReservados: q.lotes.filter((l) => l.status === 'RESERVADO').length,
+        lotesVendidos: q.lotes.filter((l) => l.status === 'VENDIDO').length,
+      },
+    }));
   },
 
   async getById(id: string) {
