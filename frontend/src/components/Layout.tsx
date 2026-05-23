@@ -160,7 +160,7 @@ export function Layout({ children }: { children: ReactNode }) {
 
       {/* Desktop sidebar */}
       <aside
-        className="hidden md:flex flex-col shrink-0 bg-slate-900 text-slate-100 relative"
+        className="hidden md:flex flex-col shrink-0 bg-slate-900 text-slate-100 relative overflow-hidden"
         style={{ width: desktopWidth }}
       >
         {/* Sidebar content — rendered at full width inside a clipped container */}
