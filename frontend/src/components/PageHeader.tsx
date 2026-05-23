@@ -12,14 +12,14 @@ export function PageHeader({ title, subtitle, actions, back }: Props) {
   const navigate = useNavigate();
 
   return (
-    <div className="mb-5 flex items-end justify-between gap-4">
+    <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
       <div className="flex items-center gap-3">
         {back && (
           <button
             type="button"
             onClick={() => navigate(-1)}
             aria-label="Voltar"
-            className="flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -38,11 +38,11 @@ export function PageHeader({ title, subtitle, actions, back }: Props) {
           </button>
         )}
         <div>
-          <h1 className="text-2xl font-semibold text-slate-900">{title}</h1>
-          {subtitle && <p className="mt-1 text-sm text-slate-500">{subtitle}</p>}
+          <h1 className="text-xl font-semibold text-slate-900 sm:text-2xl">{title}</h1>
+          {subtitle && <p className="mt-0.5 text-sm text-slate-500">{subtitle}</p>}
         </div>
       </div>
-      {actions && <div className="flex gap-2">{actions}</div>}
+      {actions && <div className="flex flex-wrap gap-2">{actions}</div>}
     </div>
   );
 }
